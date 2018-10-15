@@ -16,6 +16,7 @@ export class VideoValidatorsService {
   readonly VIDEO_TAGS: BuildFormValidator
   readonly VIDEO_SUPPORT: BuildFormValidator
   readonly VIDEO_SCHEDULE_PUBLICATION_AT: BuildFormValidator
+  readonly VIDEO_PRODUCED_AT: BuildFormValidator
 
   constructor (private i18n: I18n) {
 
@@ -91,6 +92,11 @@ export class VideoValidatorsService {
       MESSAGES: {
         'required': this.i18n('A date is required to schedule video update.')
       }
+    }
+
+    this.VIDEO_PRODUCED_AT = {
+      VALIDATORS: [ ],
+      MESSAGES: {}
     }
   }
 }
