@@ -116,9 +116,14 @@
 
             <div class="form-group">
               <label i18n for="producedAt">Production date</label>
-              <input type="text" id="producedAt" formControlName="producedAt" />
+              <my-help i18n-preHtml preHtml="This is the date when the content was originally published (e.g. the release date for a film)"></my-help>
+              <p-calendar
+                id="producedAt" formControlName="producedAt" [dateFormat]="calendarDateFormat"
+                [locale]="calendarLocale" [showTime]="true" [hideOnDateTimeSelect]="true" [monthNavigator]="true" [yearNavigator]="true" [yearRange]="myYearRange"
+              >
+              </p-calendar>
             </div>
-            
+
             <my-peertube-checkbox
               inputName="nsfw" formControlName="nsfw"
               i18n-labelText labelText="This video contains mature or explicit content"
