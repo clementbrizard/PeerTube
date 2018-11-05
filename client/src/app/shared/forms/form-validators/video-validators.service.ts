@@ -16,7 +16,7 @@ export class VideoValidatorsService {
   readonly VIDEO_TAGS: BuildFormValidator
   readonly VIDEO_SUPPORT: BuildFormValidator
   readonly VIDEO_SCHEDULE_PUBLICATION_AT: BuildFormValidator
-  readonly VIDEO_PRODUCED_AT: BuildFormValidator
+  readonly VIDEO_ORIGINAL_PUBLICATION_AT: BuildFormValidator
 
   constructor (private i18n: I18n) {
 
@@ -94,7 +94,7 @@ export class VideoValidatorsService {
       }
     }
 
-    this.VIDEO_PRODUCED_AT = {
+    this.VIDEO_ORIGINAL_PUBLICATION_AT = {
       VALIDATORS: [ ],
       MESSAGES: {}
     }
