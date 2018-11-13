@@ -324,6 +324,7 @@ async function updateVideo (req: express.Request, res: express.Response) {
       if (videoInfoToUpdate.support !== undefined) videoInstance.set('support', videoInfoToUpdate.support)
       if (videoInfoToUpdate.description !== undefined) videoInstance.set('description', videoInfoToUpdate.description)
       if (videoInfoToUpdate.commentsEnabled !== undefined) videoInstance.set('commentsEnabled', videoInfoToUpdate.commentsEnabled)
+      //if (videoInfoToUpdate.originalPublishedAt !== undefined) videoInstance.set('originalPublishedAt', videoInfoToUpdate.originalPublishedAt)
       if (videoInfoToUpdate.privacy !== undefined) {
         const newPrivacy = parseInt(videoInfoToUpdate.privacy.toString(), 10)
         videoInstance.set('privacy', newPrivacy)
