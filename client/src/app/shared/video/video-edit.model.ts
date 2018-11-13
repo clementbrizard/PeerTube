@@ -25,6 +25,7 @@ export class VideoEdit implements VideoUpdate {
   uuid?: string
   id?: number
   scheduleUpdate?: VideoScheduleUpdate
+  originalPublishedAt: Date | string
 
   constructor (video?: Video & { tags: string[], commentsEnabled: boolean, support: string, thumbnailUrl: string, previewUrl: string }) {
     if (video) {
@@ -46,6 +47,7 @@ export class VideoEdit implements VideoUpdate {
       this.previewUrl = video.previewUrl
 
       this.scheduleUpdate = video.scheduledUpdate
+      this.originalPublishedAt = video.originalPublishedAt
     }
   }
 
@@ -82,7 +84,8 @@ export class VideoEdit implements VideoUpdate {
       commentsEnabled: this.commentsEnabled,
       waitTranscoding: this.waitTranscoding,
       channelId: this.channelId,
-      privacy: this.privacy
+      privacy: this.privacy,
+      originalPublishedAt: this.originalPublishedAt
     }
 
     // Special case if we scheduled an update
