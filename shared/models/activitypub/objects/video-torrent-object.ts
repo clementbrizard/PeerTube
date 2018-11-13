@@ -24,6 +24,7 @@ export interface VideoTorrentObject {
   waitTranscoding: boolean
   state: VideoState
   published: string
+  originalPublishedAt: string //originalPublished or originalPublishedAt ?
   updated: string
   mediaType: 'text/markdown'
   content: string
