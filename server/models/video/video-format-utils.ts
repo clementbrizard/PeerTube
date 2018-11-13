@@ -60,6 +60,7 @@ function videoModelToFormattedJSON (video: VideoModel, options?: VideoFormatting
     createdAt: video.createdAt,
     updatedAt: video.updatedAt,
     publishedAt: video.publishedAt,
+    originalPublishedAt: video.originalPublishedAt,
     account: {
       id: formattedAccount.id,
       uuid: formattedAccount.uuid,
@@ -264,6 +265,7 @@ function videoModelToActivityPubObject (video: VideoModel): VideoTorrentObject {
     state: video.state,
     commentsEnabled: video.commentsEnabled,
     published: video.publishedAt.toISOString(),
+    originalPublishedAt: video.originalPublishedAt.toISOString(), //originalPublished or originalPublishedAt ?
     updated: video.updatedAt.toISOString(),
     mediaType: 'text/markdown',
     content: video.getTruncatedDescription(),

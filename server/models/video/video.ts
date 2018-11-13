@@ -101,6 +101,7 @@ const indexes: Sequelize.DefineIndexesOptions[] = [
 
   { fields: [ 'createdAt' ] },
   { fields: [ 'publishedAt' ] },
+  { fields: [ 'originalPublishedAt' ] },
   { fields: [ 'duration' ] },
   { fields: [ 'category' ] },
   { fields: [ 'licence' ] },
@@ -526,7 +527,7 @@ type AvailableForListIDsOptions = {
   tableName: 'video',
   indexes
 })
-export class VideoModel extends Model<VideoModel> {
+export class VideoModel  extends Model<VideoModel> {
 
   @AllowNull(false)
   @Default(DataType.UUIDV4)
@@ -638,6 +639,10 @@ export class VideoModel extends Model<VideoModel> {
   @Default(Sequelize.NOW)
   @Column
   publishedAt: Date
+
+  @Default(Sequelize.NOW)
+  @Column //not sure about this
+  originalPublishedAt: Date
 
   @ForeignKey(() => VideoChannelModel)
   @Column
