@@ -72,7 +72,8 @@ export class VideoEdit implements VideoUpdate {
 
     // Convert originalPublishedAt to string so that function objectToFormData() works correctly
     if (this.originalPublishedAt){
-      this.originalPublishedAt = this.originalPublishedAt.toISOString()
+      const originalPublishedAt = new Date(values['originalPublishedAt']);
+      this.originalPublishedAt = originalPublishedAt.toISOString();
     }
   }
 
