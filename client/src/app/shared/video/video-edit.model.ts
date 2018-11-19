@@ -25,7 +25,7 @@ export class VideoEdit implements VideoUpdate {
   uuid?: string
   id?: number
   scheduleUpdate?: VideoScheduleUpdate
-  originalPublishedAt: Date | string
+  originalPublishedAt?: Date | string
 
   constructor (video?: Video & { tags: string[], commentsEnabled: boolean, support: string, thumbnailUrl: string, previewUrl: string }) {
     if (video) {
@@ -68,6 +68,11 @@ export class VideoEdit implements VideoUpdate {
       }
     } else {
       this.scheduleUpdate = null
+    }
+
+    // Convert originalPublishedAt to string so that function objectToFormData() works correctly
+    if (this.originalPublishedAt){
+      this.originalPublishedAt = this.originalPublishedAt.toISOString()
     }
   }
 

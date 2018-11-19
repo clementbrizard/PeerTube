@@ -188,7 +188,8 @@ async function addVideo (req: express.Request, res: express.Response) {
     support: videoInfo.support,
     privacy: videoInfo.privacy,
     duration: videoPhysicalFile['duration'], // duration was added by a previous middleware
-    channelId: res.locals.videoChannel.id
+    channelId: res.locals.videoChannel.id,
+    originalPublishedAt: videoInfo.originalPublishedAt
   }
   const video = new VideoModel(videoData)
   video.url = getVideoActivityPubUrl(video) // We use the UUID, so set the URL after building the object
@@ -324,7 +325,7 @@ async function updateVideo (req: express.Request, res: express.Response) {
       if (videoInfoToUpdate.support !== undefined) videoInstance.set('support', videoInfoToUpdate.support)
       if (videoInfoToUpdate.description !== undefined) videoInstance.set('description', videoInfoToUpdate.description)
       if (videoInfoToUpdate.commentsEnabled !== undefined) videoInstance.set('commentsEnabled', videoInfoToUpdate.commentsEnabled)
-      //if (videoInfoToUpdate.originalPublishedAt !== undefined) videoInstance.set('originalPublishedAt', videoInfoToUpdate.originalPublishedAt)
+      if (videoInfoToUpdate.originalPublishedAt !== undefined) videoInstance.set('originalPublishedAt', videoInfoToUpdate.originalPublishedAt)
       if (videoInfoToUpdate.privacy !== undefined) {
         const newPrivacy = parseInt(videoInfoToUpdate.privacy.toString(), 10)
         videoInstance.set('privacy', newPrivacy)
