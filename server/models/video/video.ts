@@ -527,7 +527,7 @@ type AvailableForListIDsOptions = {
   tableName: 'video',
   indexes
 })
-export class VideoModel  extends Model<VideoModel> {
+export class VideoModel extends Model<VideoModel> {
 
   @AllowNull(false)
   @Default(DataType.UUIDV4)
