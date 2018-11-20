@@ -527,7 +527,7 @@ type AvailableForListIDsOptions = {
   tableName: 'video',
   indexes
 })
-export class VideoModel  extends Model<VideoModel> {
+export class VideoModel extends Model<VideoModel> {
 
   @AllowNull(false)
   @Default(DataType.UUIDV4)
@@ -641,7 +641,7 @@ export class VideoModel  extends Model<VideoModel> {
   publishedAt: Date
 
   @Default(Sequelize.NOW)
-  @Column //not sure about this
+  @Column
   originalPublishedAt: Date
 
   @ForeignKey(() => VideoChannelModel)
