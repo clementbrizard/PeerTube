@@ -265,7 +265,9 @@ function videoModelToActivityPubObject (video: VideoModel): VideoTorrentObject {
     state: video.state,
     commentsEnabled: video.commentsEnabled,
     published: video.publishedAt.toISOString(),
-    originalPublishedAt: video.originalPublishedAt.toISOString(),
+    originalPublishedAt: video.originalPublishedAt ?
+      video.originalPublishedAt.toISOString() :
+      null,
     updated: video.updatedAt.toISOString(),
     mediaType: 'text/markdown',
     content: video.getTruncatedDescription(),
