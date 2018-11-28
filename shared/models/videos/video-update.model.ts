@@ -17,5 +17,5 @@ export interface VideoUpdate {
   thumbnailfile?: Blob
   previewfile?: Blob
   scheduleUpdate?: VideoScheduleUpdate
-  originalPublishedAt?: Date | string
+  originallyPublishedAt?: Date | string
 }
