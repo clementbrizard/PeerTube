@@ -67,7 +67,7 @@ export class VideoImportService {
     const description = video.description || null
     const support = video.support || null
     const scheduleUpdate = video.scheduleUpdate || null
-    const originalPublishedAt = video.originalPublishedAt || null
+    const originallyPublishedAt = video.originallyPublishedAt || null
 
     return {
       name: video.name,
@@ -85,7 +85,7 @@ export class VideoImportService {
       thumbnailfile: video.thumbnailfile,
       previewfile: video.previewfile,
       scheduleUpdate,
-      originalPublishedAt
+      originallyPublishedAt
     }
   }
 

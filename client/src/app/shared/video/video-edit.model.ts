@@ -25,7 +25,7 @@ export class VideoEdit implements VideoUpdate {
   uuid?: string
   id?: number
   scheduleUpdate?: VideoScheduleUpdate
-  originalPublishedAt?: Date | string
+  originallyPublishedAt?: Date | string
 
   constructor (video?: Video & { tags: string[], commentsEnabled: boolean, support: string, thumbnailUrl: string, previewUrl: string }) {
     if (video) {
@@ -47,7 +47,7 @@ export class VideoEdit implements VideoUpdate {
       this.previewUrl = video.previewUrl
 
       this.scheduleUpdate = video.scheduledUpdate
-      this.originalPublishedAt = video.originalPublishedAt
+      this.originallyPublishedAt = video.originallyPublishedAt
     }
   }
 
@@ -70,10 +70,10 @@ export class VideoEdit implements VideoUpdate {
       this.scheduleUpdate = null
     }
 
-    // Convert originalPublishedAt to string so that function objectToFormData() works correctly
-    if (this.originalPublishedAt){
-      const originalPublishedAt = new Date(values['originalPublishedAt']);
-      this.originalPublishedAt = originalPublishedAt.toISOString();
+    // Convert originallyPublishedAt to string so that function objectToFormData() works correctly
+    if (this.originallyPublishedAt){
+      const originallyPublishedAt = new Date(values['originallyPublishedAt']);
+      this.originallyPublishedAt = originallyPublishedAt.toISOString();
     }
   }
 
@@ -91,7 +91,7 @@ export class VideoEdit implements VideoUpdate {
       waitTranscoding: this.waitTranscoding,
       channelId: this.channelId,
       privacy: this.privacy,
-      originalPublishedAt: this.originalPublishedAt
+      originallyPublishedAt: this.originallyPublishedAt
     }
 
     // Special case if we scheduled an update

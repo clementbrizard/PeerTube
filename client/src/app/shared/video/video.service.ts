@@ -81,7 +81,7 @@ export class VideoService implements VideosProvider {
     const description = video.description || null
     const support = video.support || null
     const scheduleUpdate = video.scheduleUpdate || null
-    const originalPublishedAt = video.originalPublishedAt || null
+    const originallyPublishedAt = video.originallyPublishedAt || null
 
     const body: VideoUpdate = {
       name: video.name,
@@ -99,7 +99,7 @@ export class VideoService implements VideosProvider {
       thumbnailfile: video.thumbnailfile,
       previewfile: video.previewfile,
       scheduleUpdate,
-      originalPublishedAt
+      originallyPublishedAt
     }
 
     const data = objectToFormData(body)

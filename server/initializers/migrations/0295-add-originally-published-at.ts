@@ -12,11 +12,11 @@ async function up (utils: {
       allowNull: true,
       defaultValue: Sequelize.NOW
     }
-    await utils.queryInterface.addColumn('video', 'originalPublishedAt', data)
+    await utils.queryInterface.addColumn('video', 'originallyPublishedAt', data)
   }
 
   {
-    const query = 'UPDATE video SET "originalPublishedAt" = video."publishedAt"'
+    const query = 'UPDATE video SET "originallyPublishedAt" = video."publishedAt"'
     await utils.sequelize.query(query)
   }
 
@@ -27,7 +27,7 @@ async function up (utils: {
       allowNull: false,
       defaultValue: Sequelize.NOW
     }
-    await utils.queryInterface.changeColumn('video', 'originalPublishedAt', data)
+    await utils.queryInterface.changeColumn('video', 'originallyPublishedAt', data)
   }
 
 }
