@@ -46,7 +46,11 @@ export class UpdateVideosScheduler extends AbstractScheduler {
           const isNewVideo = oldPrivacy === VideoPrivacy.PRIVATE
 
           video.privacy = schedule.privacy
-          if (isNewVideo === true) video.publishedAt = new Date()
+          if (isNewVideo === true) {
+            const publicationDate = new Date()
+            video.publishedAt = publicationDate
+            video.originallyPublishedAt = publicationDate
+          }
 
           await video.save({ transaction: t })
           await federateVideoIfNeeded(video, isNewVideo, t)

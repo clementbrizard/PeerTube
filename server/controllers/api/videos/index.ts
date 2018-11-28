@@ -334,7 +334,11 @@ async function updateVideo (req: express.Request, res: express.Response) {
         videoInstance.set('privacy', newPrivacy)
 
         if (wasPrivateVideo === true && newPrivacy !== VideoPrivacy.PRIVATE) {
-          videoInstance.set('publishedAt', new Date())
+          const publicationDate = new Date()
+          videoInstance.set('publishedAt', publicationDate)
+          if (videoInfoToUpdate.originallyPublishedAt === null) {
+            videoInstance.set('originallyPublishedAt', publicationDate)
+          }
         }
       }
 
