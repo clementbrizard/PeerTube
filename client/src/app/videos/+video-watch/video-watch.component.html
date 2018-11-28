@@ -35,7 +35,7 @@
               <h1 class="video-info-name">{{ video.name }}</h1>
 
               <div i18n class="video-info-date-views">
-                Published on {{ video.originalPublishedAt | date: 'dd MMMM yyyy' }} - {{ video.views | myNumberFormatter }} views
+                Published on {{ video.originallyPublishedAt | date: 'dd MMMM yyyy' }} - {{ video.views | myNumberFormatter }} views
               </div>
             </div>
 
@@ -44,7 +44,7 @@
                 <h1 class="video-info-name">{{ video.name }}</h1>
 
                 <div i18n class="video-info-date-views">
-                  Published on {{ video.originalPublishedAt | date: 'dd MMMM yyyy' }} - {{ video.views | myNumberFormatter }} views
+                  Published on {{ video.originallyPublishedAt | date: 'dd MMMM yyyy' }} - {{ video.views | myNumberFormatter }} views
                 </div>
               </div>
 

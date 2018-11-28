@@ -17,7 +17,7 @@ export class Video implements VideoServerModel {
   createdAt: Date
   updatedAt: Date
   publishedAt: Date
-  originalPublishedAt: Date | string
+  originallyPublishedAt: Date | string
   category: VideoConstant<number>
   licence: VideoConstant<number>
   language: VideoConstant<string>
@@ -117,7 +117,7 @@ export class Video implements VideoServerModel {
     this.privacy.label = peertubeTranslate(this.privacy.label, translations)
 
     this.scheduledUpdate = hash.scheduledUpdate
-    this.originalPublishedAt = new Date(hash.originalPublishedAt.toString())
+    this.originallyPublishedAt = new Date(hash.originallyPublishedAt.toString())
     if (this.state) this.state.label = peertubeTranslate(this.state.label, translations)
 
     this.blacklisted = hash.blacklisted

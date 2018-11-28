@@ -341,7 +341,7 @@ function getCommonVideoAttributes () {
       .optional()
       .toBoolean()
       .custom(isBooleanValid).withMessage('Should have comments enabled boolean'),
-    body('originalPublishedAt')
+    body('originallyPublishedAt')
       .optional()
       .customSanitizer(toValueOrNull)
       .custom(isVideoOriginallyPublishedAtValid).withMessage('Should have a valid original publication date'),

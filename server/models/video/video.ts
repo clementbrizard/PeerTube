@@ -101,7 +101,7 @@ const indexes: Sequelize.DefineIndexesOptions[] = [
 
   { fields: [ 'createdAt' ] },
   { fields: [ 'publishedAt' ] },
-  { fields: [ 'originalPublishedAt' ] },
+  { fields: [ 'originallyPublishedAt' ] },
   { fields: [ 'duration' ] },
   { fields: [ 'category' ] },
   { fields: [ 'licence' ] },
@@ -642,8 +642,8 @@ export class VideoModel  extends Model<VideoModel> {
 
   @AllowNull(false)
   @Default(Sequelize.NOW)
-  @Column //not sure about this
-  originalPublishedAt: Date
+  @Column
+  originallyPublishedAt: Date
 
   @ForeignKey(() => VideoChannelModel)
   @Column

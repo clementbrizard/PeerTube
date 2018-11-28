@@ -101,7 +101,7 @@ export class VideoEditComponent implements OnInit, OnDestroy {
       previewfile: null,
       support: this.videoValidatorsService.VIDEO_SUPPORT,
       schedulePublicationAt: this.videoValidatorsService.VIDEO_SCHEDULE_PUBLICATION_AT,
-      originalPublishedAt: this.videoValidatorsService.VIDEO_ORIGINAL_PUBLISHED_AT
+      originallyPublishedAt: this.videoValidatorsService.VIDEO_ORIGINALLY_PUBLISHED_AT
     }
 
     this.formValidatorService.updateForm(
