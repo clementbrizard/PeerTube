@@ -640,6 +640,7 @@ export class VideoModel extends Model<VideoModel> {
   @Column
   publishedAt: Date
 
+  @AllowNull(false)
   @Default(Sequelize.NOW)
   @Column
   originallyPublishedAt: Date
