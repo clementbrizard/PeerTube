@@ -47,7 +47,7 @@ export class VideoEdit implements VideoUpdate {
       this.previewUrl = video.previewUrl
 
       this.scheduleUpdate = video.scheduledUpdate
-      this.originallyPublishedAt = video.originallyPublishedAt
+      this.originallyPublishedAt = new Date(video.originallyPublishedAt)
     }
   }
 
@@ -71,9 +71,9 @@ export class VideoEdit implements VideoUpdate {
     }
 
     // Convert originallyPublishedAt to string so that function objectToFormData() works correctly
-    if (this.originallyPublishedAt){
-      const originallyPublishedAt = new Date(values['originallyPublishedAt']);
-      this.originallyPublishedAt = originallyPublishedAt.toISOString();
+    if (this.originallyPublishedAt) {
+      const originallyPublishedAt = new Date(values['originallyPublishedAt'])
+      this.originallyPublishedAt = originallyPublishedAt.toISOString()
     }
   }
 

@@ -1,6 +1,6 @@
 import { UserRight, VideoConstant, VideoDetails as VideoDetailsServerModel, VideoFile, VideoState } from '../../../../../shared'
 import { AuthUser } from '../../core'
-import { Video } from '../../shared/video/video.model' //import { Video } from './video.model'
+import { Video } from '../../shared/video/video.model' // import { Video } from './video.model'
 import { Account } from '@app/shared/account/account.model'
 import { VideoChannel } from '@app/shared/video-channel/video-channel.model'
 

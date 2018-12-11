@@ -45,7 +45,7 @@ export class VideoEditComponent implements OnInit, OnDestroy {
 
   calendarLocale: any = {}
   minScheduledDate = new Date()
-  myYearRange = "1880:"+(new Date()).getFullYear();
+  myYearRange = '1880:' + (new Date()).getFullYear()
 
   calendarTimezone: string
   calendarDateFormat: string

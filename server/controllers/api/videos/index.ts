@@ -328,7 +328,7 @@ async function updateVideo (req: express.Request, res: express.Response) {
           videoInstance.set('originallyPublishedAt', videoInfoToUpdate.originallyPublishedAt)
         }
       }
-      
+     
       if (videoInfoToUpdate.privacy !== undefined) {
         const newPrivacy = parseInt(videoInfoToUpdate.privacy.toString(), 10)
         videoInstance.set('privacy', newPrivacy)
