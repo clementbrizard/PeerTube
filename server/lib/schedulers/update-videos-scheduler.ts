@@ -49,7 +49,11 @@ export class UpdateVideosScheduler extends AbstractScheduler {
           if (isNewVideo === true) {
             const publicationDate = new Date()
             video.publishedAt = publicationDate
-            video.originallyPublishedAt = publicationDate
+            const originallyPublishedAt = new Date(video.originallyPublishedAt)
+            const createdAt = new Date(video.createdAt);
+            if (originallyPublishedAt.getTime() === createdAt.getTime()) {
+              video.originallyPublishedAt = publicationDate
+            }
           }
 
           await video.save({ transaction: t })

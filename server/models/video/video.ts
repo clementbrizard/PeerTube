@@ -6,6 +6,7 @@ import { join } from 'path'
 import * as Sequelize from 'sequelize'
 import {
   AllowNull,
+  BeforeCreate,
   BeforeDestroy,
   BelongsTo,
   BelongsToMany,
@@ -640,8 +641,6 @@ export class VideoModel extends Model<VideoModel> {
   @Column
   publishedAt: Date
 
-  @AllowNull(false)
-  @Default(Sequelize.NOW)
   @Column
   originallyPublishedAt: Date
 
@@ -757,6 +756,14 @@ export class VideoModel extends Model<VideoModel> {
     [ 'separate' as any ]: true
   })
   VideoCaptions: VideoCaptionModel[]
+
+  @BeforeCreate
+  static async checkOriginallyPublishedAtBeforeCreate(instance: VideoModel) {
+    if(!instance.originallyPublishedAt) {
+      instance.originallyPublishedAt = instance.createdAt
+    }
+    console.log(instance.publishedAt)
+  }
 
   @BeforeDestroy
   static async sendDelete (instance: VideoModel, options) {

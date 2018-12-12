@@ -323,12 +323,11 @@ async function updateVideo (req: express.Request, res: express.Response) {
       if (videoInfoToUpdate.support !== undefined) videoInstance.set('support', videoInfoToUpdate.support)
       if (videoInfoToUpdate.description !== undefined) videoInstance.set('description', videoInfoToUpdate.description)
       if (videoInfoToUpdate.commentsEnabled !== undefined) videoInstance.set('commentsEnabled', videoInfoToUpdate.commentsEnabled)
-      if (videoInfoToUpdate.originallyPublishedAt !== undefined) {
-        if (videoInfoToUpdate.originallyPublishedAt !== null) {
-          videoInstance.set('originallyPublishedAt', videoInfoToUpdate.originallyPublishedAt)
-        }
+      if (videoInfoToUpdate.originallyPublishedAt !== undefined &&
+          videoInfoToUpdate.originallyPublishedAt !== null) {
+        videoInstance.set('originallyPublishedAt', videoInfoToUpdate.originallyPublishedAt)
       }
-     
+
       if (videoInfoToUpdate.privacy !== undefined) {
         const newPrivacy = parseInt(videoInfoToUpdate.privacy.toString(), 10)
         videoInstance.set('privacy', newPrivacy)
@@ -336,8 +335,14 @@ async function updateVideo (req: express.Request, res: express.Response) {
         if (wasPrivateVideo === true && newPrivacy !== VideoPrivacy.PRIVATE) {
           const publicationDate = new Date()
           videoInstance.set('publishedAt', publicationDate)
-          if (videoInfoToUpdate.originallyPublishedAt === null) {
-            videoInstance.set('originallyPublishedAt', publicationDate)
+          const oldOriginallyPublishedAt = new Date(videoInstance.originallyPublishedAt)
+          const newOriginallyPublishedAt = new Date(videoInfoToUpdate.originallyPublishedAt)
+          if (newOriginallyPublishedAt.getTime() === oldOriginallyPublishedAt.getTime()) {
+            console.log("yes")
+            const createdAt = new Date(videoInstance.createdAt);
+            if (oldOriginallyPublishedAt.getTime() === createdAt.getTime()) {
+              videoInstance.set('originallyPublishedAt', publicationDate)
+            }
           }
         }
       }
