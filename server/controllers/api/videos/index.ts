@@ -333,7 +333,16 @@ async function updateVideo (req: express.Request, res: express.Response) {
         videoInstance.set('privacy', newPrivacy)
 
         if (wasPrivateVideo === true && newPrivacy !== VideoPrivacy.PRIVATE) {
-          videoInstance.set('publishedAt', new Date())
+          const publicationDate = new Date()
+          videoInstance.set('publishedAt', publicationDate)
+          const oldOriginallyPublishedAt = new Date(videoInstance.originallyPublishedAt)
+          const newOriginallyPublishedAt = new Date(videoInfoToUpdate.originallyPublishedAt)
+          if (newOriginallyPublishedAt.getTime() === oldOriginallyPublishedAt.getTime()) {
+            const createdAt = new Date(videoInstance.createdAt)
+            if (oldOriginallyPublishedAt.getTime() === createdAt.getTime()) {
+              videoInstance.set('originallyPublishedAt', publicationDate)
+            }
+          }
         }
       }
 
